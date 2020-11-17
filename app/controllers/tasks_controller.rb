@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def create 
     @task = Task.new(task_params)
     if @task.save
-      redirect_to task_path
+      redirect_to task_path(@task.id)
     else
       render :new
     end
@@ -25,8 +25,8 @@ class TasksController < ApplicationController
   end
 
   def update 
-    if @task.save
-      redirect_to task_path
+    if @task.update(task_params)
+      redirect_to task_path(@task.id)
     else
       render :edit
     end
@@ -40,9 +40,10 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @task = Task.find(id: params[:id])
+    @task = Task.find(params[:id])
   end
 
   def task_params
+    params.require(:task).permit(:title, :details, :completed)
   end
 end

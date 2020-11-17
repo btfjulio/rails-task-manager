@@ -1,0 +1,8 @@
+<div class="tasks">
+  <% @tasks.each do |task| %>
+    <div class="task">
+      <p class="title"><%= task.title %></p>
+      <p class="details"><%= task.details %></p>
+    </div>
+  <% end %>
+</div>
