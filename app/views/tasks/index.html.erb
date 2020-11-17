@@ -3,6 +3,13 @@
     <div class="task">
       <p class="title"><%= task.title %></p>
       <p class="details"><%= task.details %></p>
+      <%= link_to "See more", task_path(task) %>
+      <%= link_to "Delete task", task_path(task), method: :delete %>
     </div>
   <% end %>
+</div>
+
+
+<div class="new">
+  <%= link_to "Add Task", new_task_path %>
 </div>
